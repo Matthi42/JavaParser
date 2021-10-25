@@ -70,13 +70,8 @@ ASSINGNBITWISEXOR:     BITWISEXOR ASSIGN;
 RETURN: 'return';
 
 
-
-
-
 INCREMENT: '++';
 DECREMENT: '--';
-
-
 
 
 
@@ -86,14 +81,15 @@ StringLiteral: QUOTATIONMARK .*? QUOTATIONMARK;
 CharLiteral : '\'' . '\'';
 FloatLiteral: [+-]?[1-9]+[0-9]*'f'
             | [+-]?'0f'
-            | [+-]? [0-9]*'.'[0-9]+;
+            | [+-]? [0-9]*'.'[0-9]+'f'?;
 NullLiteral : 'null';
 BooleanLiteral : 'true' | 'false';
 
-Identifyer : [a-zA-Z]+[a-zA-Z0-9]*;
+Identifyer : [a-zA-Z][a-zA-Z0-9]*;
 
 
 WS: [ \r\n\t] + -> skip;
+
 
 //Grammar
 attributeOrMethod : attribute

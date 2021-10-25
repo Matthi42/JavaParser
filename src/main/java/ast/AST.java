@@ -1,26 +1,18 @@
 package ast;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.stream.Collectors;
 
-public class AST implements Node{
-    private ArrayList<Class> classes;
+public class AST {
+    List<JClass> classes;
 
-    public AST(ArrayList<Class> classes) {
-        this.classes = classes;
-    }
-
-    public ArrayList<Class> getClasses() {
-        return classes;
-    }
-
-    public void setClasses(ArrayList<Class> classes) {
-        this.classes = classes;
+    public AST(List<JClass> classes){
+        this.classes=classes;
     }
 
     @Override
     public String toString(){
-        return "File{" +
-                this.classes.stream().map(aClass -> aClass.toString() + "; ").collect(Collectors.joining());
+        return classes.stream().map(JClass::toString).collect(Collectors
+                .joining(";\n", "Java File:[\n", "]\n"));
     }
 }

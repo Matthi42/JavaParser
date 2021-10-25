@@ -14,4 +14,9 @@ class MainTest {
         Main.parse();
     }
 
+    @Test
+    void testAST(){
+
+    }
+
 }

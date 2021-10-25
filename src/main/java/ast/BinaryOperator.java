@@ -1,6 +1,6 @@
 package ast;
 
-public enum Operator {
+public enum BinaryOperator {
     PLUS,
     MINUS,
     MULTIPLY,

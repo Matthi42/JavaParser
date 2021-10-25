@@ -28,19 +28,19 @@ public class Expression {
     @Case
     static class binaryExpression {
         Expression first, second;
-        Operator op;
+        BinaryOperator op;
     }
 
     @Override
     public String toString(){
         return match(
-                (StringLiteral sl) -> "StringLiteral: " + sl.literal,
-                (BooleanLiteral bl) -> "BooleanLiteral: " +bl.literal,
-                (CharLiteral cl) -> "CharLiteral: " + cl.literal,
-                (IntLiteral il) -> "IntLiteral: " + il.literal,
-                (Identifier id) -> "Identifier: " + id.identifier,
-                (binaryExpression be) -> "BinaryExpression" + "first: " + be.first.toString() + "second: " +
-                        be.second.toString() + "Operator" + be.op.toString()
+                (StringLiteral sl) -> "StringLiteral:( " + sl.literal + " )\n",
+                (BooleanLiteral bl) -> "BooleanLiteral:( " +bl.literal + " )\n",
+                (CharLiteral cl) -> "CharLiteral:( " + cl.literal + " )\n",
+                (IntLiteral il) -> "IntLiteral:( " + il.literal + " )\n",
+                (Identifier id) -> "Identifier:( " + id.identifier + " )\n",
+                (binaryExpression be) -> "BinaryExpression:{\n" + "Exp1:{\n\t" + be.first.toString() + "}\nExp2:{\n\t" +
+                        be.second.toString() + "}\nOperator:( " + be.op.toString() + " )\n}\n"
         );
     }
 
