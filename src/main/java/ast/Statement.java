@@ -9,35 +9,41 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Sealed
-public class Statement {
+public class Statement extends ASTA{
     @Case
     static class Block {
         List<Statement> stmts;
     }
-
     @Case
     static class JReturn {
         Expression expr;
     }
-
     @Case
     static class JWhile {
         Expression condition;
         Statement block;
     }
-
     @Case
     static class Assign {
         String identifier;
         Expression expression;
     }
-
     @Case
     static class JIf {
         Expression condition;
         Statement block, elseBlock;
         List<Pair<Expression,Statement>> elseifBlocks;
     }
+    @Case
+    static class LocalVarDeclaration {
+        String type, Identifier;
+    }
+    @Case
+    static class StatementExpressionC{
+        StatementExpression statementExpression;
+    }
+    @Case
+    static class Empty {}
 
     @Override
     public String toString() {
@@ -54,7 +60,10 @@ public class Statement {
                                 "else-if-block " + index + ":{\n" + "condition: " + pair.getFirst().toString()
                                 + "block: " +pair.getSecond().toString()
                         ).collect(Collectors.joining(", ","elseIfBlocks:[ ","]")) : "" )
-                        + "else-block: " + i.elseBlock.toString()
+                        + "else-block: " + i.elseBlock.toString(),
+                (LocalVarDeclaration lvd) -> "localVariableDeclaration: " + lvd.type + " " +lvd.Identifier,
+                (StatementExpressionC sec) -> "StatmentExpression: " + sec,
+                (Empty e) -> "Empty Statement"
         );
     }
 
@@ -64,7 +73,8 @@ public class Statement {
         Statement block = Block(List.of(
                 JReturn(null),
                 Assign("i", Expression.IntLiteral(12)),
-                Assign("o", Expression.binaryExpression(Expression.IntLiteral(1),Expression.IntLiteral(3), BinaryOperator.PLUS))
+                Assign("o", Expression
+                        .binaryExpression(Expression.IntLiteral(1),Expression.IntLiteral(3), BinaryOperator.PLUS))
         ));
         System.out.println(block);
     }

@@ -7,10 +7,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Sealed
-public class StatementExpression {
+public class StatementExpression extends ASTA{
     @Case
     static class Assign{
-        Expression assignee, assignige;
+        Expression assignee, payload;
     }
     @Case
     static class JNew{
@@ -27,7 +27,7 @@ public class StatementExpression {
     @Override
     public String toString(){
         return match(
-                (Assign a) -> a.assignee.toString() + a.assignige.toString(),
+                (Assign a) -> a.assignee.toString() + a.payload.toString(),
                 (JNew n) -> n.jClass + n.parameters.stream().map(Expression::toString)
                         .collect(Collectors.joining(",\n","Parameters:{\n","}\n")),
                 (MethodCall mc) -> mc.methodName + mc.object.toString() + mc.parameters.stream().map(Expression::toString)

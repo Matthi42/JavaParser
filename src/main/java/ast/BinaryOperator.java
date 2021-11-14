@@ -4,5 +4,12 @@ public enum BinaryOperator {
     PLUS,
     MINUS,
     MULTIPLY,
-    DIVIDE
+    DIVIDE,
+    EQUALS,
+    LESS_THEN,
+    GREATER_THEN,
+    AND,
+    OR,
+    BITWISE_AND,
+    BITWISE_OR
 }

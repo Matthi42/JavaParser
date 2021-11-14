@@ -6,7 +6,7 @@ import one.util.streamex.EntryStream;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class Method {
+public class Method extends ASTA{
     String identifier, type;
     List<Modifier> modifiers;
     List<Pair<String,String>> parameters;
@@ -27,9 +27,9 @@ public class Method {
                 + "Type: '" + this.type +"'"
                 + this.modifiers.stream().map(Modifier::toString)
                     .collect(Collectors.joining(", ","Modifiers: '","'\n"))
-                + EntryStream.of(this.parameters).mapKeyValue((index, parameter) ->
+                + (this.parameters.size() == 0 ? "no Parameters" : EntryStream.of(this.parameters).mapKeyValue((index, parameter) ->
                         "parameter " + index + ": {type :" + parameter.getFirst() + ", name:" +parameter.getSecond() + "}")
-                    .collect(Collectors.joining("","",""))
+                    .collect(Collectors.joining("","","")))
                 + this.statement.toString()
                 + "}\n";
     }

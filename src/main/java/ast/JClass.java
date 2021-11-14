@@ -4,7 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-public class JClass{
+public class JClass extends ASTA{
     List<Modifier> modifiers;
     String identifier;
     List<Field> fields;
@@ -24,9 +24,9 @@ public class JClass{
                 + modifiers.stream().map(Modifier::toString)
                 .collect(Collectors.joining(", ","modifiers:[ "," ]\n"))
                 + fields.stream().map(Field::toString)
-                .collect(Collectors.joining("","",""))
+                .collect(Collectors.joining(", ","fields:[","]"))
                 + methods.stream().map(Method::toString)
-                .collect(Collectors.joining("","",""))
+                .collect(Collectors.joining(", ","methods:[","]"))
                 + '}';
     }
 }

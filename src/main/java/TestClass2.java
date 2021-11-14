@@ -1,17 +1,24 @@
 public class TestClass2 {
-    public boolean  a(){
+    private int a = -2;
+    public int  a(){
         if(true)
             while(true)
                 if(false)
-                    return true;
+                    return 34;
                 else if (true)
-                    return false;
+                    return 4;
                 else
-                    return true;
+                    return 7;
 
         {
-        };
-        return true || false;
-    };
+        }
+        return 1-2;
+    }
+
+    public boolean b(int a, int b, int c){
+        if(false)
+            return a==b&&b==c;
+        return true||false;
+    }
 
 }

@@ -3,7 +3,7 @@ package ast;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class AST {
+public class AST extends ASTA{
     List<JClass> classes;
 
     public AST(List<JClass> classes){
