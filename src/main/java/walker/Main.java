@@ -25,12 +25,5 @@ public class Main {
         FileVisitor fv = new FileVisitor();
         ASTA parseTree = fv.visitFile(tree);
         System.out.println(parseTree);
-
-
-
-        System.out.println("test");
-
-
     }
-
 }

@@ -182,18 +182,14 @@ expression: '('expression')'
           | THIS;
 
 
-
 method : modifyer? metodType Identifyer '(' parameter? ')' '{' statment* '}' SEMICOLON?;
 
 parameter : type Identifyer
           | parameter ',' type Identifyer
           ;
 
-
-
-
 modifyer : PRIVATE | PUBLIC | STATIC;
 
-metodType: type | VOID;
+metodType: VOID | type;
 
 
